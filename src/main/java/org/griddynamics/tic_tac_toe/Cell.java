@@ -1,6 +1,8 @@
-package org.griddynamics.TicTacToe;
+package org.griddynamics.tic_tac_toe;
 
-class Cell {
+import org.griddynamics.tic_tac_toe.player.Player;
+
+public final class Cell {
 
     // Game grid
     private final Grid grid;
@@ -12,7 +14,7 @@ class Cell {
     private final int x, y;
 
     /*
-     * Free cell constructor
+     * Default cell constructor
      */
     Cell(Grid grid, int x, int y) {
         this.grid = grid;
@@ -24,50 +26,47 @@ class Cell {
     /*
      * Grid getter
      */
-    Grid getGrid() {
+    public Grid getGrid() {
         return this.grid;
     }
 
     /*
      * master getter
      */
-    Player getOccupantPlayer() {
+    public Player getOccupantPlayer() {
         return this.occupantPlayer;
     }
 
     /*
      * x getter
      */
-    int getX() {
+    public int getX() {
         return this.x;
     }
 
     /*
      * y getter
      */
-    int getY() {
+    public int getY() {
         return this.y;
     }
 
     /*
      * Occupies cell by player
      */
-    boolean occupyByPlayer(Player player) {
+    public boolean occupyByPlayer(Player player) {
         // Check if already occupied
-        if (this.occupantPlayer == null) {
+        if (this.occupantPlayer != null) {
             return false;
         }
 
         // Not occupied -> assign, return true
         this.occupantPlayer = player;
-        return true;
-    }
 
-    /*
-     * toString overriding
-     */
-    @Override
-    public String toString() {
-        return " " + this.occupantPlayer.getSign();
+        // Reducing grid's free cell count
+        this.grid.reduceFreeCellCount();
+
+        // Returning true
+        return true;
     }
 }
