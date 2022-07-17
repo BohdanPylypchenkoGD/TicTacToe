@@ -12,16 +12,17 @@ public final class HumanPlayerTUI {
     private static final Scanner scanIn = new Scanner(System.in);
 
     // Regex to get coords from user
-    private static final String COORDS_REGEX = "[0123456789]+ [0123456789]+";
+    private static final String COORDS_REGEX = "\\d+ \\d+";
 
     /*
      * Gets cell coordinates from player
      */
     public static int[] getCoordsFromUser() {
+        //scanIn.useDelimiter("\n");
         String buff;
         while (true) {
             // Printing message
-            System.out.println("Enter coords | x y:");
+            System.out.print("Enter the coordinates: ");
 
             // Getting input
             buff = scanIn.nextLine();
@@ -30,7 +31,7 @@ public final class HumanPlayerTUI {
             if (buff.matches(COORDS_REGEX)) {
                 return Arrays.stream(buff.split(" ")).mapToInt(Integer::parseInt).toArray();
             } else {
-                System.out.println("Wrong input format");
+                System.out.println("You should enter numbers!");
             }
         }
     }
@@ -38,14 +39,14 @@ public final class HumanPlayerTUI {
     /*
      * Shows coord out of bound error
      */
-    public static void showCoordOutOfBoundError() {
-        System.out.println("Coords are out of grid dimension");
+    public static void showCoordOutOfBoundError(int dimension) {
+        System.out.printf("Coordinates should be from 1 to %d!\n", dimension);
     }
 
     /*
      * Shows occupied cell warning
      */
     public static void showOccupiedCellCaptureWarning() {
-        System.out.println("The cell has already been taken by other player");
+        System.out.println("This cell is occupied! Choose another one!");
     }
 }
