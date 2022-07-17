@@ -16,7 +16,7 @@ public class GridTest {
         Grid g = new Grid(3);
 
         // Printing grid
-        GridCellGameTUI.gridHumanStringRepresentation(g);
+        GridCellGameTUI.printGrid(g);
 
         // Asserting
         for (int i = 0; i < 3; i++) {

@@ -1,5 +1,6 @@
 package org.griddynamics.tic_tac_toe;
 
+import org.griddynamics.tic_tac_toe.player.EasyBotPlayer;
 import org.griddynamics.tic_tac_toe.player.HumanPlayer;
 import org.griddynamics.tic_tac_toe.player.Player;
 import org.griddynamics.tic_tac_toe.ui.GridCellGameTUI;
@@ -37,7 +38,7 @@ public final class Game {
      * Static method
      * to create game with 2 human players
      */
-    public static Game create2Human() {
+    public static Game create2Human3x3() {
         // Creating new grid
         Grid grid = new Grid(3);
 
@@ -45,6 +46,24 @@ public final class Game {
         Player[] p = new Player[2];
         p[0] = new HumanPlayer(grid, 'X');
         p[1] = new HumanPlayer(grid, 'O');
+
+        // Returning game instance
+        return new Game(grid, p);
+    }
+
+    /*
+     * Static method
+     * to create game with 1 human and 1 easy bot
+     * on 3x3
+     */
+    public static Game createHumanEasy3x3() {
+        // Creating new grid
+        Grid grid = new Grid(3);
+
+        // Creating players
+        Player[] p = new Player[2];
+        p[0] = new HumanPlayer(grid, 'X');
+        p[1] = new EasyBotPlayer(grid, 'O');
 
         // Returning game instance
         return new Game(grid, p);
@@ -60,7 +79,7 @@ public final class Game {
             // Cycling though players
             for (Player current : this.players) {
                 // Printing grid
-                GridCellGameTUI.gridHumanStringRepresentation(grid);
+                GridCellGameTUI.printGrid(grid);
 
                 // Current player makes move
                 current.makeMove();
@@ -70,13 +89,13 @@ public final class Game {
 
                 switch (state) {
                     case WIN -> {
-                        GridCellGameTUI.gridHumanStringRepresentation(grid);
-                        GridCellGameTUI.winEnd(current);
+                        GridCellGameTUI.printGrid(grid);
+                        GridCellGameTUI.printWinEnd(current);
                         return;
                     }
                     case DRAW -> {
-                        GridCellGameTUI.gridHumanStringRepresentation(grid);
-                        GridCellGameTUI.drawEnd();
+                        GridCellGameTUI.printGrid(grid);
+                        GridCellGameTUI.printDrawEnd();
                         return;
                     }
                 }
