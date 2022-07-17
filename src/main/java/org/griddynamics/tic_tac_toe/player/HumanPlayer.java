@@ -29,7 +29,7 @@ public final class HumanPlayer extends Player {
 
             // Checking coords for being in bounds
             if (coords[0] >= getGrid().getDimension() || coords[1] >= getGrid().getDimension()) {
-                HumanPlayerTUI.showCoordOutOfBoundError();
+                HumanPlayerTUI.showCoordOutOfBoundError(this.getGrid().getDimension());
                 continue;
             }
 

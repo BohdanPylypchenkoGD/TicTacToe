@@ -70,7 +70,7 @@ public final class GridCellGameTUI {
         sb.append(gridUpperLowerBorder);
 
         // Printing
-        System.out.println(sb.toString());
+        System.out.println(sb);
     }
 
     /*
@@ -84,6 +84,6 @@ public final class GridCellGameTUI {
      * Returns draw end string
      */
     public static void drawEnd() {
-        System.out.println("draw");
+        System.out.println("Draw");
     }
 }
