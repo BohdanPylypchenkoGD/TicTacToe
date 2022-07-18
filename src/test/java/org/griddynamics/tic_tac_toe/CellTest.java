@@ -28,7 +28,7 @@ class CellTest {
 
         // Printing grid
         System.out.println("Grid (after occupation):");
-        GridCellGameTUI.gridHumanStringRepresentation(g);
+        GridCellGameTUI.printGrid(g);
 
         // Asserting
         assertTrue(occupationResult);
@@ -51,7 +51,7 @@ class CellTest {
 
         // Printing grid
         System.out.println("Grid (after occupation):");
-        GridCellGameTUI.gridHumanStringRepresentation(g);
+        GridCellGameTUI.printGrid(g);
 
         // Asserting
         assertTrue(occupationResult);
@@ -65,7 +65,7 @@ class CellTest {
 
         // Printing grid
         System.out.println("Grid (2nd failed occupation attempt):");
-        GridCellGameTUI.gridHumanStringRepresentation(g);
+        GridCellGameTUI.printGrid(g);
 
         // Asserting
         assertFalse(occupationResult);
@@ -76,7 +76,7 @@ class CellTest {
 
         // Printing grid
         System.out.println("Grid (final):");
-        GridCellGameTUI.gridHumanStringRepresentation(g);
+        GridCellGameTUI.printGrid(g);
 
         // Asserting
         assertTrue(occupationResult);

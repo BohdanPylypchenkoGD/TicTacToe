@@ -12,7 +12,8 @@ public class Main {
      */
     public static void main(String[] args) {
         // Creating game
-        Game tictactoe = Game.create2Human();
+        //Game tictactoe = Game.create2Human3x3();
+        Game tictactoe = Game.createHumanEasy3x3();
 
         // Running
         tictactoe.run();

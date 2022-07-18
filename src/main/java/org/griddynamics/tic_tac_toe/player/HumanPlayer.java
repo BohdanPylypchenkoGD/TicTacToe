@@ -28,8 +28,8 @@ public final class HumanPlayer extends Player {
             coords = HumanPlayerTUI.getCoordsFromUser();
 
             // Checking coords for being in bounds
-            if (coords[0] >= getGrid().getDimension() || coords[1] >= getGrid().getDimension()) {
-                HumanPlayerTUI.showCoordOutOfBoundError(this.getGrid().getDimension());
+            if (!this.areCoordsInBounds(coords)) {
+                HumanPlayerTUI.printCoordOutOfBoundError(this.getGrid().getDimension());
                 continue;
             }
 
@@ -39,9 +39,21 @@ public final class HumanPlayer extends Player {
                 return this.getGrid().getCell(coords[0], coords[1]);
             } else {
                 // Failure -> show warning
-                HumanPlayerTUI.showOccupiedCellCaptureWarning();
+                HumanPlayerTUI.printOccupiedCellCaptureWarning();
                 continue;
             }
         }
+    }
+
+    /*
+     * Checks if coords are in bounds
+     */
+    private boolean areCoordsInBounds(int[] coords) {
+        for (int coord : coords) {
+            if (coord < 0 || coord >= this.getGrid().getDimension()) {
+                return false;
+            }
+        }
+        return true;
     }
 }

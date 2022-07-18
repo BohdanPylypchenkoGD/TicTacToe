@@ -29,7 +29,10 @@ public final class HumanPlayerTUI {
 
             // Checking for regex
             if (buff.matches(COORDS_REGEX)) {
-                return Arrays.stream(buff.split(" ")).mapToInt(Integer::parseInt).toArray();
+                return Arrays.stream(buff.split(" ")).
+                              mapToInt(Integer::parseInt).
+                              map(e -> e - 1).
+                              toArray();
             } else {
                 System.out.println("You should enter numbers!");
             }
@@ -39,14 +42,14 @@ public final class HumanPlayerTUI {
     /*
      * Shows coord out of bound error
      */
-    public static void showCoordOutOfBoundError(int dimension) {
+    public static void printCoordOutOfBoundError(int dimension) {
         System.out.printf("Coordinates should be from 1 to %d!\n", dimension);
     }
 
     /*
      * Shows occupied cell warning
      */
-    public static void showOccupiedCellCaptureWarning() {
+    public static void printOccupiedCellCaptureWarning() {
         System.out.println("This cell is occupied! Choose another one!");
     }
 }

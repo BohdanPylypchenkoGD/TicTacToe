@@ -15,7 +15,7 @@ public final class GridCellGameTUI {
     private static final Scanner scanIn = new Scanner(System.in);
 
     // String to represent free cell on grid
-    private static final String CELL_FREE_SIGN = "_";
+    private static final String CELL_FREE_SIGN = " ";
 
     // Upper-lower grid border part
     private static final String GRID_UPPER_LOWER_BORDER_PART = "---";
@@ -41,7 +41,7 @@ public final class GridCellGameTUI {
     /*
      * grid instance human string representation
      */
-    public static void gridHumanStringRepresentation(Grid grid) {
+    public static void printGrid(Grid grid) {
         // Creating actual upper-lower grid border
         String gridUpperLowerBorder = GRID_UPPER_LOWER_BORDER_PART.repeat(grid.getDimension());
 
@@ -76,14 +76,14 @@ public final class GridCellGameTUI {
     /*
      * Returns win end string
      */
-    public static void winEnd(Player winner) {
+    public static void printWinEnd(Player winner) {
         System.out.println(winner.getSign() + " wins");
     }
 
     /*
      * Returns draw end string
      */
-    public static void drawEnd() {
+    public static void printDrawEnd() {
         System.out.println("Draw");
     }
 }
