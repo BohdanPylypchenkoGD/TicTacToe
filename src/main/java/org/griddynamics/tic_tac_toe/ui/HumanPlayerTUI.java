@@ -8,6 +8,17 @@ import java.util.Scanner;
  */
 public final class HumanPlayerTUI {
 
+    // Coordinates input request
+    private static final String COORD_INPUT_REQUEST = "Enter the coordinates: ";
+
+    // Wrong input warning
+    private static final String WRONG_INPUT_WARNING = "You should enter numbers!";
+
+    // Coords out of bounds warning
+    private static final String COORDS_OUT_OF_BOUNDS_WARNING = "Coordinates should be from 1 to %d!\n";
+    // Occupied cell warning
+    private static final String OCCUPATED_CELL_WARNING = "This cell is occupied! Choose another one!";
+
     // Scanner for stdin
     private static final Scanner scanIn = new Scanner(System.in);
 
@@ -22,7 +33,7 @@ public final class HumanPlayerTUI {
         String buff;
         while (true) {
             // Printing message
-            System.out.print("Enter the coordinates: ");
+            System.out.print(COORD_INPUT_REQUEST);
 
             // Getting input
             buff = scanIn.nextLine();
@@ -34,7 +45,7 @@ public final class HumanPlayerTUI {
                               map(e -> e - 1).
                               toArray();
             } else {
-                System.out.println("You should enter numbers!");
+                System.out.println(WRONG_INPUT_WARNING);
             }
         }
     }
@@ -43,13 +54,13 @@ public final class HumanPlayerTUI {
      * Shows coord out of bound error
      */
     public static void printCoordOutOfBoundError(int dimension) {
-        System.out.printf("Coordinates should be from 1 to %d!\n", dimension);
+        System.out.printf(COORDS_OUT_OF_BOUNDS_WARNING, dimension);
     }
 
     /*
      * Shows occupied cell warning
      */
     public static void printOccupiedCellCaptureWarning() {
-        System.out.println("This cell is occupied! Choose another one!");
+        System.out.println(OCCUPATED_CELL_WARNING);
     }
 }

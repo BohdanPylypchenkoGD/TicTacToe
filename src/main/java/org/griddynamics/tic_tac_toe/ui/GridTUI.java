@@ -2,14 +2,13 @@ package org.griddynamics.tic_tac_toe.ui;
 
 import org.griddynamics.tic_tac_toe.Cell;
 import org.griddynamics.tic_tac_toe.Grid;
-import org.griddynamics.tic_tac_toe.player.Player;
 
 import java.util.Scanner;
 
 /*
  * TUI for Cell and Grid classes
  */
-public final class GridCellGameTUI {
+public final class GridTUI {
 
     // Scanner for stdin
     private static final Scanner scanIn = new Scanner(System.in);
@@ -71,19 +70,5 @@ public final class GridCellGameTUI {
 
         // Printing
         System.out.println(sb);
-    }
-
-    /*
-     * Returns win end string
-     */
-    public static void printWinEnd(Player winner) {
-        System.out.println(winner.getSign() + " wins");
-    }
-
-    /*
-     * Returns draw end string
-     */
-    public static void printDrawEnd() {
-        System.out.println("Draw");
     }
 }

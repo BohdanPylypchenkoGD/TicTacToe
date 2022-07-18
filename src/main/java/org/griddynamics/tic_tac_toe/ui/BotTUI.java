@@ -5,10 +5,13 @@ package org.griddynamics.tic_tac_toe.ui;
  */
 public final class BotTUI {
 
+    // easy bot move message
+    private static final String EASY_BOT_MSG = "Making move level %s\n";
+
     /*
      * Prints easy bot make move message
      */
     public static void printEasyBotMakeMoveMessage() {
-        System.out.println("Making move level \"easy\"");
+        System.out.printf(EASY_BOT_MSG, "easy");
     }
 }
