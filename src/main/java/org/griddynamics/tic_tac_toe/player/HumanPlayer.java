@@ -20,27 +20,23 @@ public final class HumanPlayer extends Player {
      * Implementing selectCellToOccupy for HumanPlayer
      */
     @Override
-    protected Cell selectFreeCell() {
+    protected Cell selectCell() {
         // While user does not select free cell
         int[] coords;
         while (true) {
             // Getting coords from user
             coords = HumanPlayerTUI.getCoordsFromUser();
 
-            // Checking coords for being in bounds
+            // Processing coords
             if (!this.areCoordsInBounds(coords)) {
+                // Coords are not in bounds
                 HumanPlayerTUI.printCoordOutOfBoundError(this.getGrid().getDimension());
-                continue;
-            }
-
-            // Checking for free
-            if (this.getGrid().getCell(coords[0], coords[1]).getOccupantPlayer() == null) {
-                // Success -> return
+            } else if (this.getGrid().getCell(coords[0], coords[1]).getOccupantPlayer() == null) {
+                // Cell is free, can return
                 return this.getGrid().getCell(coords[0], coords[1]);
             } else {
-                // Failure -> show warning
+                // Cell is already occupied -> show warning
                 HumanPlayerTUI.printOccupiedCellCaptureWarning();
-                continue;
             }
         }
     }

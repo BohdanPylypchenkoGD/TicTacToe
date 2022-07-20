@@ -27,9 +27,15 @@ public final class EasyBotPlayer extends Player {
      * selectFreeCell override
      */
     @Override
-    protected Cell selectFreeCell() {
+    protected Cell selectCell() {
         // Showing message
         BotTUI.printEasyBotMakeMoveMessage();
+
+        // Check if grid is full
+        if (this.getGrid().isFull()) {
+            // No free -> return null
+            return null;
+        }
 
         // Endless cycle
         int[] coords = new int[2];

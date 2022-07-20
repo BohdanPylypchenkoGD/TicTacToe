@@ -41,6 +41,50 @@ public final class Grid {
     }
 
     /*
+     * Row getter
+     */
+    public Cell[] getRow(int rowIndex) {
+        Cell[] result = new Cell[this.getDimension()];
+        for (int i = 0; i < result.length; i++) {
+            result[i] = cells[rowIndex][i];
+        }
+        return result;
+    }
+
+    /*
+     * Column getter
+     */
+    public Cell[] getColumn(int columnIndex) {
+        Cell[] result = new Cell[this.getDimension()];
+        for (int i = 0; i < result.length; i++) {
+            result[i] = cells[i][columnIndex];
+        }
+        return result;
+    }
+
+    /*
+     * Main diagonal getter
+     */
+    public Cell[] getMainDiagonal() {
+        Cell[] result = new Cell[this.getDimension()];
+        for (int i = 0; i < result.length; i++) {
+            result[i] = cells[i][i];
+        }
+        return result;
+    }
+
+    /*
+     * Additional diagonal getter
+     */
+    public Cell[] getAdditionalDiagonal() {
+        Cell[] result = new Cell[this.getDimension()];
+        for (int i = 0; i < result.length; i++) {
+            result[i] = cells[this.getDimension() - 1 - i][i];
+        }
+        return result;
+    }
+
+    /*
      * Reduces grid's free cell count by one
      */
     void reduceFreeCellCount() {
@@ -52,7 +96,7 @@ public final class Grid {
      * (not occupied) cells
      * Otherwise - false
      */
-    boolean isFull() {
+    public boolean isFull() {
         return this.freeCellCounter == 0;
     }
 }
