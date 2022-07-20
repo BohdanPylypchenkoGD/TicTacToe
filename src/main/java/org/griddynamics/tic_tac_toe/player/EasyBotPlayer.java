@@ -39,9 +39,7 @@ public final class EasyBotPlayer extends Player {
             coords[1] = random.nextInt(this.getGrid().getDimension());
 
             // Check if cell is occupied
-            if (this.getGrid().getCell(coords[0], coords[1]).getOccupantPlayer() != null) {
-                continue;
-            } else {
+            if (this.getGrid().getCell(coords[0], coords[1]).getOccupantPlayer() == null) {
                 return this.getGrid().getCell(coords[0], coords[1]);
             }
         }

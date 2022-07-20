@@ -1,7 +1,7 @@
 package org.griddynamics.tic_tac_toe;
 
 import org.griddynamics.tic_tac_toe.player.EasyBotPlayer;
-import org.griddynamics.tic_tac_toe.ui.GridCellGameTUI;
+import org.griddynamics.tic_tac_toe.ui.GridTUI;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -24,7 +24,7 @@ public class EasyBotPlayerTest {
         ebp.makeMove();
 
         // Printing
-        GridCellGameTUI.printGrid(grid);
+        GridTUI.printGrid(grid);
 
         // Asserting
         boolean areAnyCellsWereTakenByBot = false;

@@ -3,7 +3,8 @@ package org.griddynamics.tic_tac_toe;
 import org.griddynamics.tic_tac_toe.player.EasyBotPlayer;
 import org.griddynamics.tic_tac_toe.player.HumanPlayer;
 import org.griddynamics.tic_tac_toe.player.Player;
-import org.griddynamics.tic_tac_toe.ui.GridCellGameTUI;
+import org.griddynamics.tic_tac_toe.ui.GameTUI;
+import org.griddynamics.tic_tac_toe.ui.GridTUI;
 
 /*
  * Game class
@@ -70,6 +71,32 @@ public final class Game {
     }
 
     /*
+     * Static method
+     * to create 3x3 game with 2 outside-specified
+     * players. Players are defined by string names
+     */
+    public static Game create2User3x3(GameTUI.PlayerType player1Type,
+                                      GameTUI.PlayerType player2Type) {
+        // Creating new grid
+        Grid grid = new Grid(3);
+
+        // Creating players
+        Player[] players = new Player[2];
+        GameTUI.PlayerType[] playerTypes = { player1Type, player2Type };
+        char[] playerSigns = { 'X', 'O' };
+        for (int i = 0; i < players.length; i++) {
+            if (playerTypes[i] == GameTUI.PlayerType.USER) {
+                players[i] = new HumanPlayer(grid, playerSigns[i]);
+            } else if (playerTypes[i] == GameTUI.PlayerType.EASY) {
+                players[i] = new EasyBotPlayer(grid, playerSigns[i]);
+            }
+        }
+
+        // Returning game instance
+        return new Game(grid, players);
+    }
+
+    /*
      * Runs game instance
      */
     public void run() {
@@ -79,7 +106,7 @@ public final class Game {
             // Cycling though players
             for (Player current : this.players) {
                 // Printing grid
-                GridCellGameTUI.printGrid(grid);
+                GridTUI.printGrid(grid);
 
                 // Current player makes move
                 current.makeMove();
@@ -89,13 +116,13 @@ public final class Game {
 
                 switch (state) {
                     case WIN -> {
-                        GridCellGameTUI.printGrid(grid);
-                        GridCellGameTUI.printWinEnd(current);
+                        GridTUI.printGrid(grid);
+                        GameTUI.printWinEnd(current);
                         return;
                     }
                     case DRAW -> {
-                        GridCellGameTUI.printGrid(grid);
-                        GridCellGameTUI.printDrawEnd();
+                        GridTUI.printGrid(grid);
+                        GameTUI.printDrawEnd();
                         return;
                     }
                 }
