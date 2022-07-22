@@ -22,14 +22,18 @@ public class GameTUI {
     // Easy bot sign
     public static final String PLAYER_EASY_COMMAND = "easy";
 
+    // Medium bot sign
+    public static final String PLAYER_MEDIUM_COMMAND = "medium";
+
     // Player type enum
     public enum PlayerType {
         USER,
-        EASY
+        EASY,
+        MEDIUM
     }
 
     // Start command regex
-    private static final String START_REGEX = "start (user|easy) (user|easy)";
+    private static final String START_REGEX = "start (user|easy|medium) (user|easy|medium)";
 
     // Exit command regex
     private static final String EXIT_REGEX = "exit";
@@ -100,6 +104,9 @@ public class GameTUI {
                     break;
                 case GameTUI.PLAYER_EASY_COMMAND:
                     playerTypes[i - 1] = PlayerType.EASY;
+                    break;
+                case GameTUI.PLAYER_MEDIUM_COMMAND:
+                    playerTypes[i - 1] = PlayerType.MEDIUM;
                     break;
             }
         }
